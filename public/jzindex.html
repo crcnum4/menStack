@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>menStackXHR</title>
+    <script src="hotels.js"></script>
+
+
+</head>
+
+<body>
+    <form id="text">
+        <h2>Create Room</h2>
+        <label for="roomTypes">Room Types:</label>
+        <input type="text" id="roomTypes" />
+        <br />
+        <label for="roomsAvailable">Rooms Available:</label>
+        <input type="text" id="roomsAvailable" />
+        <br />
+
+        <br />
+        ​
+        <button type="submit" id="post-btn" onclick="createNewRoom()" value="submit">
+            Post Request
+        </button>
+    </form>
+    ​
+    <h2>Show All Rooms</h2>
+    ​
+    <button onclick="getAllRooms()">Get Request</button>
+    <div id="results"></div>
+</body>
+
+</html>

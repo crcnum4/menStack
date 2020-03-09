@@ -1,16 +1,26 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const keys = require("./config/keys");
+ require("dotenv").config();
+ const express = require("express");
+ const app = express();
+ const mongoose = require("mongoose");
 
-const app = express();
+ const PORT = 3000;
 
-app.use(express.json());
+ mongoose.connect(process.env.DATABASE_URL, {
+   useNewUrlParser: true,
+   useUnifiedTopology: true
+ });
 
-mongoose
-  .connect(keys.mongoUri)
-  .then(() => console.log("connected to db"))
-  .catch(error => console.log("DB Connection error", error));
+ app.use("/", express.static("public"));
 
-app.use(express.static("public"));
+ const db = mongoose.connection;
 
-app.listen(3000, () => console.log("listening on port 3000"));
+ db.on("error", err => console.error(error));
+ db.once("open", () => console.log("Connected to Database"));
+
+ app.use(express.json());
+
+ const roomsRouter = require("./routes/rooms");
+
+ app.use("/api/rooms", roomsRouter);
+
+ app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
