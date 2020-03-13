@@ -3,7 +3,8 @@ const router = express.Router();
 const Room = require("../models/room");
 
 //Get all rooms
-// New Files
+// New Files done 03-12-20
+
 router.get("/", async (req, res) => {
     try {
         const rooms = await Room.find();
