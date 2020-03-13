@@ -1,0 +1,11 @@
+GET http://localhost:3000/api/rooms
+
+###
+POST http://localhost:3000/api/rooms
+Content-Type: application/json
+
+{
+    "roomTypes": ['room'],
+    "roomsAvailable": [1, 2, 3],
+   
+}
